@@ -4,7 +4,16 @@ const connect = () => {
     host: "165.227.47.243",
     port: 50541,
   });
-  console.log("data");
+
+  conn.on("connect", () => {
+    console.log("You are now connected!"); // connect handler/callback function
+    conn.write("Name: JAQ"); // name command
+  });
+
+  // incoming data
+  conn.on("data", (data) => {
+    console.log("server response", data);
+  });
 
   // interpret incoming data as text
   conn.setEncoding("utf8");
