@@ -1,8 +1,12 @@
-// establishes a connection with the game server
+// importing module ip/port
+const net = require("net");
+const { IP, PORT } = require("./constants");
+
+// connection with game server
 const connect = () => {
   const conn = net.createConnection({
-    host: "165.227.47.243",
-    port: 50541,
+    host: IP,
+    port: PORT,
   });
 
   conn.on("connect", () => {
