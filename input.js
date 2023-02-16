@@ -1,7 +1,7 @@
 let connection;
-
+// listening for user input
 // setup interface to handle user input from stdin
-const setupInput = function (conn) {
+const setupInput = (conn) => {
   // stores the active TCP connection object
   connection = conn;
   const stdin = process.stdin; // event listener for sdin object
@@ -18,27 +18,30 @@ const setupInput = function (conn) {
 // data is received from stdin
 // particular key is pressed on the keyboard input
 const handleUserInput = (pressedKey) => {
+  if (pressedKey === "\u0003") {
+    process.exit();
+  }
   // WASD Movement
-  if (key === "w") {
-    console.log("Move: up");
+  if (pressedKey === "w") {
+    connection.write("Move: up");
   }
-  if (key === "a") {
-    console.log("Move: left");
+  if (pressedKey === "a") {
+    connection.write("Move: left");
   }
-  if (key === "s") {
-    console.log("Move: down");
+  if (pressedKey === "s") {
+    connection.write("Move: down");
   }
-  if (key === "d") {
-    console.log("Move: right");
+  if (pressedKey === "d") {
+    connection.write("Move: right");
   }
-  if (key === "z") {
-    console.log("Say: weee");
+  if (pressedKey === "z") {
+    connection.write("Say: weee");
   }
-  if (key === "x") {
-    console.log("Say: hiii");
+  if (pressedKey === "x") {
+    connection.write("Say: hiii");
   }
-  if (key === "c") {
-    console.log("Say: byee");
+  if (pressedKey === "c") {
+    connection.write("Say: byee");
   }
 };
 /* Supported Move Commands

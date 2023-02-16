@@ -14,12 +14,12 @@ const connect = () => {
     conn.write("Name: JAQ"); // name command
   });
 
-  // incoming data
+  // incoming data/messages from the server
   conn.on("data", (data) => {
     console.log("server response", data);
   });
 
-  // interpret incoming data as text
+  // interpret/encode incoming data as text
   conn.setEncoding("utf8");
 
   return conn;
